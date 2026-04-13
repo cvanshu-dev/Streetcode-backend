@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: streetcode-backend
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: streetcode-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: streetcode-redis
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true
+
+databases:
+  - name: streetcode-postgres
+    plan: free
+    region: oregon
+    ipAllowList: []
+
+caches:
+  - name: streetcode-redis
+    plan: free
+    region: oregon
+    ipAllowList: []
