@@ -1,0 +1,86 @@
+--- a/package.json
++++ b/package.json
+@@ -2,9 +2,24 @@
+   "name": "@tsc_tech/medusa-plugin-razorpay-payment",
+   "version": "0.0.11",
+   "description": "A starter for Medusa plugins.",
+   "author": "Medusa (https://medusajs.com)",
+   "license": "MIT",
+   "files": [
+     ".medusa/server"
+   ],
+   "exports": {
+     "./package.json": "./package.json",
++    "./providers/razorpay": {
++      "import": "./.medusa/server/src/providers/razorpay/index.js",
++      "require": "./.medusa/server/src/providers/razorpay/index.js"
++    },
+     "./workflows": "./.medusa/server/src/workflows/index.js",
+     "./.medusa/server/src/modules/*": "./.medusa/server/src/modules/*/index.js",
+-    "./providers/*": "./.medusa/server/src/providers/*/index.js",
++    "./providers/razorpay/services": "./.medusa/server/src/providers/razorpay/services/index.js",
++    "./providers/razorpay/types": "./.medusa/server/src/providers/razorpay/types/index.js",
++    "./providers/razorpay/utils": "./.medusa/server/src/providers/razorpay/utils/index.js",
++    "./providers/razorpay/core": "./.medusa/server/src/providers/razorpay/core/index.js",
++    "./providers/*": {
++      "import": "./.medusa/server/src/providers/*/index.js",
++      "require": "./.medusa/server/src/providers/*/index.js"
++    },
+     "./*": "./.medusa/server/src/*.js"
+   },
+   "repository": {
+@@ -25,20 +40,22 @@
+       "medusa-plugin-razorpay-payment"
+     ]
+   },
+   "scripts": {
+     "build": "medusa plugin:build",
+     "dev": "medusa plugin:develop",
+     "prepublishOnly": "medusa plugin:build"
+   },
+   "devDependencies": {
+-    "@medusajs/admin-sdk": "2.7.1",
+-    "@medusajs/cli": "2.7.1",
+-    "@medusajs/framework": "2.7.1",
+-    "@medusajs/icons": "2.7.1",
+-    "@medusajs/medusa": "2.7.1",
+-    "@medusajs/test-utils": "2.7.1",
++    "@medusajs/admin-sdk": "^2.7.1",
++    "@medusajs/cli": "^2.7.1",
++    "@medusajs/framework": "^2.7.1",
++    "@medusajs/icons": "^2.7.1",
++    "@medusajs/medusa": "^2.7.1",
++    "@medusajs/test-utils": "^2.7.1",
+     "@medusajs/ui": "4.0.4",
+     "@mikro-orm/cli": "6.4.3",
+     "@mikro-orm/core": "6.4.3",
+     "@mikro-orm/knex": "6.4.3",
+     "@mikro-orm/migrations": "6.4.3",
+@@ -48,21 +65,23 @@
+     "pg": "^8.13.0",
+     "prop-types": "^15.8.1",
+     "react": "^18.2.0",
+     "react-dom": "^18.2.0",
+     "ts-node": "^10.9.2",
+     "typescript": "^5.6.2",
+     "vite": "^5.2.11",
+     "yalc": "^1.0.0-pre.53"
+   },
+   "peerDependencies": {
+-    "@medusajs/admin-sdk": "2.7.1",
+-    "@medusajs/cli": "2.7.1",
+-    "@medusajs/framework": "2.7.1",
+-    "@medusajs/icons": "2.7.1",
+-    "@medusajs/medusa": "2.7.1",
+-    "@medusajs/test-utils": "2.7.1",
++    "@medusajs/admin-sdk": "2.x",
++    "@medusajs/cli": "2.x",
++    "@medusajs/framework": "2.x",
++    "@medusajs/icons": "2.x",
++    "@medusajs/medusa": "2.x",
++    "@medusajs/test-utils": "2.x",
+     "@medusajs/ui": "4.0.3",
+     "@mikro-orm/cli": "6.4.3",
+     "@mikro-orm/core": "6.4.3",
+     "@mikro-orm/knex": "6.4.3",
+     "@mikro-orm/migrations": "6.4.3",
