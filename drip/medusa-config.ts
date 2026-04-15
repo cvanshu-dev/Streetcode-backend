@@ -20,20 +20,6 @@ export default defineConfig({
     {
       resolve: "@medusajs/medusa/admin",
     },
-    {
-      resolve: "@medusajs/medusa/payment",
-      options: {
-        providers: [
-          {
-            resolve: "@tsc_tech/medusa-plugin-razorpay-payment/providers/razorpay",
-            id: "razorpay",
-            options: {
-              key_id: process.env.RAZORPAY_ID,
-              key_secret: process.env.RAZORPAY_SECRET,
-            },
-          },
-        ],
-      },
-    },
+  
   ],
 })
